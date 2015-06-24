@@ -34,6 +34,7 @@ var fields_iuc78etk9w = {
 	"QualificationsSuitable" : {"required": true, "stage": 2},
 	"QualificationsVerified" : {"required": true, "stage": 2},
 	"GCSE_Requirements" : {"required": false, "stage": 2},
+	"_x0031_2_x002e__x0020_GCSE_x0020" : {"required": false, "stage": 2}, //_x0031_2_x002e__x0020_GCSE_x0020 == 13. GCSE Maths meets requirements?
 	"EngProficiencySuitable" : {"required": false, "stage": 2},
 	"English_Prof_Verification" : {"required": false, "stage": 2},
 	// "English_x0020_GCSE_x0020_meet_x0" : {"required": false, "stage": 2},
@@ -43,6 +44,7 @@ var fields_iuc78etk9w = {
 	// "Reference_x0020_suitable_x003f_" : {"required": false, "stage": 2},
 	// "Original_x0020_reference_x0020_r" : {"required": false, "stage": 2},
 	"Reference_Verification" : {"required": false, "stage": 2},
+	"_x0031_7_x002e__x0020_References" : {"required": false, "stage": 2}, //_x0031_7_x002e__x0020_References == 17. References required?
 	"Email_x0020_address_x0020_from_x" : {"required": true, "stage": 2},
 	"Email_x0020_template_x0020_to_x0" : {"required": false, "stage": 2},
 	"Conditions_x0020_of_x0020_offer_" : {"required": false, "stage": 2},
