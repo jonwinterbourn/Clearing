@@ -10,7 +10,7 @@
 			tbl = tbl.substring(0, tbl.indexOf("</table>"))+"<tr>" + cells + '</tr>' + tbl.substr(tbl.indexOf("</table>"));
 			return tbl;		
 		}
-		
+
 		var output="";
 		var stage = (ctx.BaseViewID=="NewForm" ? "1" :  ctx.ListData.Items[0].Offer_x0020_Stage.toString());
 		
@@ -28,7 +28,7 @@
 		 switch (ctx.CurrentFieldSchema.FieldType) {
 			case "Note":
 			// if (ctx.CurrentFieldValue!="") prepareNoteFieldValue(ctx);
-			output = (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) ? SPFieldNote_Edit(ctx) : SPFieldNote_Display(ctx));
+			output = ((fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) || fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"] ==4) ? SPFieldNote_Edit(ctx) : SPFieldNote_Display(ctx));
 			break;
 			
 			case "Lookup":
@@ -37,7 +37,7 @@
 			break;
 			
 			case 'Choice':
-			if (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage)) {
+			if (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) || fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"] ==4) {
 				var choice = SPFieldChoice_Edit(ctx);			
 				output = (choice.search(/(\_\$DropDownChoice|\_\$FillInChoice)/)!=-1 ? choice : transposeCells(choice));
 			} else {
@@ -62,18 +62,19 @@
 			break;
 			
 			case 'Boolean':
-			output =  (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) ? SPFieldBoolean_Edit(ctx) : SPField_FormDisplay_DefaultNoEncode(ctx));
+
+			output =  ((fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) || fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"] ==4) ? SPFieldBoolean_Edit(ctx) : SPField_FormDisplay_DefaultNoEncode(ctx));
 			break;
 			
 			case 'Text':
-			output =  (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) ? SPFieldText_Edit(ctx) : SPField_FormDisplay_Default(ctx));
+			output =  ((fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) || fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"] ==4) ? SPFieldText_Edit(ctx) : SPField_FormDisplay_Default(ctx));
 			break;
 			
 			case 'DateTime':
-			output =  (fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) ? SPFieldDateTime_Edit(ctx) : SPFieldDateTime_Display(ctx));
+			output =  ((fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]>=parseInt(stage) || fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"] ==4) ? SPFieldDateTime_Edit(ctx) : SPFieldDateTime_Display(ctx));
 			break;
 		}	 
-
+		
 		 return '<span data-stage="'+fields_iuc78etk9w[ctx.CurrentFieldSchema.Name]["stage"]+'">'+output+'</span>';
 		//return output;
 	}
