@@ -133,10 +133,14 @@ function init_iuc78etk9w() {
 			$('span[data-stage="'+$(elm).data('stage').toString()+'"]').closest("tr").show();						
 		}		
 	}
-// Current stage stored in stage field	
-	$("input[id^='Offer_x0020_Stage_']").closest("tr").hide();
+	// Current stage stored in stage field	
+	// JW amend - hide only if stage <=4
 	
 	var stage = parseInt($("input[id^='Offer_x0020_Stage_']").val());
+	if (stage <=4) {
+		$("input[id^='Offer_x0020_Stage_']").closest("tr").hide();
+	}
+	
 	
 	for (var fld in fields_iuc78etk9w) {
 		if (fields_iuc78etk9w[fld]["required"]) {
@@ -208,5 +212,8 @@ function init_iuc78etk9w() {
 	$("select[id$='DateTimeFieldDateHours'],select[id$='DateTimeFieldDateMinutes']").removeAttr('width').css("width", "75px");
 
 	// Next stage now stored in stage field	
-	$("input[id^='Offer_x0020_Stage_']").val((stage+1).toString());
+	// JW amend - only if stage <=4
+	if (stage <=4) {
+		$("input[id^='Offer_x0020_Stage_']").val((stage+1).toString());
+	}
 }
